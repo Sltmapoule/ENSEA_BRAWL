@@ -38,8 +38,8 @@ public class Main extends Application {
             gameEngine.update(welcome.getOutput());
             gameEngine.update(shop.getOutput());
             gameEngine.update(fight.getOutput());
-            gameEngine.update(win.getOutput());
             gameEngine.update(lose.getOutput());
+            gameEngine.update(win.getOutput());
             welcome.clear();
             shop.clear();
             fight.clear();
@@ -93,8 +93,8 @@ public class Main extends Application {
                     stage.setMaximized(false);
                     stage.centerOnScreen();
                     stage.setScene(winScene);
-
                 }
+                break;
             case LOST:
                 if (stage.getScene() != loseScene)
                 {
@@ -103,13 +103,9 @@ public class Main extends Application {
                     stage.setMaximized(false);
                     stage.centerOnScreen();
                     stage.setScene(loseScene);
-
                 }
-
+                break;
         }
-
-
-
     }
 
 
