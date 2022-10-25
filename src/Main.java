@@ -4,7 +4,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -16,26 +15,27 @@ public class Main extends Application {
     Group root = new Group();
     GameEngine gameEngine = new GameEngine();
     Welcome welcome = new Welcome();
+    Pane pane = new Pane(root);
+    Scene theScene = new Scene(pane);
+    Scene welcomeScene = new Scene(welcome.getWelcome());
+
 
 
     public Main(){
-        Pane pane = new Pane(root);
-        Scene theScene = new Scene(pane);
         stage.setTitle("ENSEA BRAWL !");
-        stage.setScene(theScene);
         stage.show();
-        /*stage.setScene(new Scene(welcome.getWelcome()));*/
-        stage.setMaximized(true);
-
         player1.fillHand();
         player1.fillBoard();
         player2.fillBoard();
         player2.getBoard().remove(3);
 
+
     }
 
 
-    public void start(Stage stage) throws Exception{at.start();}
+    public void start(Stage stage) throws Exception{
+        at.start();
+    }
 
 
     AnimationTimer at = new AnimationTimer() {
@@ -44,7 +44,7 @@ public class Main extends Application {
             width = stage.getWidth();
             height = stage.getHeight();
             player1.placeCards(width, height, player2);
-            gameEngine.update(l,new ArrayList<String>(),welcome.getWelcome());
+            gameEngine.update(l,welcome.output);
             welcome.update(width,height);
             render(l);
         }
@@ -60,6 +60,29 @@ public class Main extends Application {
         for (Card card: player2.getBoard()) {
             if (!root.getChildren().contains(card.getCardView())){ root.getChildren().add(card.getCardView());}
         }
+
+
+        switch (gameEngine.getState()) {
+            case WELCOME:
+                if (stage.getScene() != welcomeScene)
+                {
+                    stage.setWidth(300);
+                    stage.setHeight(800);
+                    stage.centerOnScreen();
+                    stage.setScene(welcomeScene);
+
+                }
+                break;
+            case PLAY_SHOP:
+                if (stage.getScene() != theScene)
+                {
+                    stage.setMaximized(true);
+                    stage.setScene(theScene);
+
+                }
+                break;
+        }
+
 
 
     }

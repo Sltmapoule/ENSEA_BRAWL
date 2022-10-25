@@ -14,14 +14,13 @@ public class GameEngine {
         return state;
     }
 
-    public void update(long time, ArrayList<String> input, Pane pane){
+    public void update(long time,String input){
         System.out.println(state);
         switch (state){
             case WELCOME :
-                if(!input.isEmpty())
-                {   state = State.WELCOME;
-
-                }
+                if(input == "PLAY_SHOP")
+                { state = State.PLAY_SHOP;}
+                else { state = State.WELCOME;}
                 break;
             case PLAY_SHOP :
 
