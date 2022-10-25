@@ -5,20 +5,26 @@ public class Shop {
 
     Player shop = new Player();
     Player player = new Player();
-    Pane pane = new Pane();
+    private Pane pane = new Pane();
     Button fight = new Button("Passer au combat");
-    String output;
+    Button lose = new Button("Lose");
+    private String output;
 
     public Shop(){
         pane.getChildren().add(fight);
+        pane.getChildren().add(lose);
         fight.setVisible(true);
         fight.setOnMouseClicked(mouseEvent -> output = "PLAY_FIGHT");
+        lose.setVisible(true);
+        lose.setOnMouseClicked(mouseEvent -> output = "LOST");
         shop.fillBoard();
         player.fillBoard();
         player.fillHand();
     }
 
     public void update(double width,double height){
+        lose.setTranslateX(10);
+        lose.setTranslateY(10);
         fight.setTranslateX((width- fight.getWidth())/2);
         fight.setTranslateY((height-fight.getHeight())/2);
         for (Card card: shop.getBoard()) {
@@ -34,8 +40,15 @@ public class Shop {
 
     }
 
+    public void clear(){
+        output = "";
+    }
+
     public Pane getShop() {
         return pane;
     }
 
+    public String getOutput() {
+        return output;
+    }
 }

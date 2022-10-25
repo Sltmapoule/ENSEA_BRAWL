@@ -21,6 +21,7 @@ public class Player {
         hand.add(new Card("img/testCards.png",240,0,50,50));
     }
 
+
     public ArrayList<Card> getBoard() {
         return board;
     }

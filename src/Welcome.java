@@ -2,9 +2,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 public class Welcome {
-    Pane pane = new Pane();
-    Button start = new Button("Start");
-    String output;
+    private Pane pane = new Pane();
+    private Button start = new Button("Start");
+    private String output;
 
     public Welcome(){
         pane.getChildren().add(start);
@@ -18,7 +18,17 @@ public class Welcome {
 
     }
 
+    public void clear(){
+        output = "";
+    }
+
     public Pane getWelcome() {
         return pane;
     }
+
+    public String getOutput() {
+        return output;
+    }
+
+
 }

@@ -1,35 +1,23 @@
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
-    Player player1 = new Player();
-    Player player2 = new Player();
     double width;
     double height;
     Stage stage = new Stage();
-    Group root = new Group();
     GameEngine gameEngine = new GameEngine();
     Welcome welcome = new Welcome();
     Scene welcomeScene = new Scene(welcome.getWelcome());
     Shop shop = new Shop();
     Scene shopScene = new Scene(shop.getShop());
-
-
+    Fight fight = new Fight();
+    Scene fightScene = new Scene(fight.getFight());
 
     public Main(){
         stage.setTitle("ENSEA BRAWL !");
         stage.show();
-        player1.fillHand();
-        player1.fillBoard();
-        player2.fillBoard();
-        player2.getBoard().remove(3);
-
-
     }
 
 
@@ -43,13 +31,19 @@ public class Main extends Application {
         public void handle(long l) {
             width = stage.getWidth();
             height = stage.getHeight();
-            player1.placeCards(width, height, player2);
-            gameEngine.update(l,welcome.output);
+            gameEngine.update(l,welcome.getOutput());
+            gameEngine.update(l,shop.getOutput());
+            gameEngine.update(l,fight.getOutput());
+            welcome.clear();
+            shop.clear();
+            fight.clear();
             welcome.update(width,height);
             shop.update(width,height);
+            fight.update(width,height);
             render(l);
         }
     };
+
 
     public void render(long l){
 
@@ -69,6 +63,14 @@ public class Main extends Application {
                 {
                     stage.setMaximized(true);
                     stage.setScene(shopScene);
+
+                }
+                break;
+            case PLAY_FIGHT:
+                if (stage.getScene() != fightScene)
+                {
+                    stage.setMaximized(true);
+                    stage.setScene(fightScene);
 
                 }
                 break;
