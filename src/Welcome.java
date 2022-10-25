@@ -13,8 +13,8 @@ public class Welcome {
     }
 
     public void update(double width,double height){
-        start.setTranslateX(width/2);
-        start.setTranslateY(height/2);
+        start.setTranslateX((width- start.getWidth())/2);
+        start.setTranslateY((height-start.getHeight())/2);
 
     }
 

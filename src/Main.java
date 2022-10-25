@@ -15,9 +15,9 @@ public class Main extends Application {
     Group root = new Group();
     GameEngine gameEngine = new GameEngine();
     Welcome welcome = new Welcome();
-    Pane pane = new Pane(root);
-    Scene theScene = new Scene(pane);
     Scene welcomeScene = new Scene(welcome.getWelcome());
+    Shop shop = new Shop();
+    Scene shopScene = new Scene(shop.getShop());
 
 
 
@@ -46,21 +46,12 @@ public class Main extends Application {
             player1.placeCards(width, height, player2);
             gameEngine.update(l,welcome.output);
             welcome.update(width,height);
+            shop.update(width,height);
             render(l);
         }
     };
 
     public void render(long l){
-        for (Card card: player1.getBoard()) {
-            if  (!root.getChildren().contains(card.getCardView())){ root.getChildren().add(card.getCardView());}
-        }
-        for (Card card: player1.getHand()) {
-            if (!root.getChildren().contains(card.getCardView())){ root.getChildren().add(card.getCardView());}
-        }
-        for (Card card: player2.getBoard()) {
-            if (!root.getChildren().contains(card.getCardView())){ root.getChildren().add(card.getCardView());}
-        }
-
 
         switch (gameEngine.getState()) {
             case WELCOME:
@@ -74,10 +65,10 @@ public class Main extends Application {
                 }
                 break;
             case PLAY_SHOP:
-                if (stage.getScene() != theScene)
+                if (stage.getScene() != shopScene)
                 {
                     stage.setMaximized(true);
-                    stage.setScene(theScene);
+                    stage.setScene(shopScene);
 
                 }
                 break;
