@@ -2,7 +2,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 public class Welcome {
-    private Pane pane = new Pane();
+    private final Pane pane = new Pane();
     private final Button start = new Button("Start");
     private String output;
 

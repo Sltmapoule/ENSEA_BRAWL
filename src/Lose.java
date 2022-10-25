@@ -2,7 +2,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 public class Lose {
-    private Pane pane = new Pane();
+    private final Pane pane = new Pane();
     private final Button welcome = new Button("Welcome");
     private String output;
 

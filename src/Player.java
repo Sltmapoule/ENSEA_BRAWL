@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Player {
 
-    private ArrayList<Card> board = new ArrayList<>();
-    private ArrayList<Card> hand = new ArrayList<>();
+    private final ArrayList<Card> board = new ArrayList<>();
+    private final ArrayList<Card> hand = new ArrayList<>();
 
 
     public void fillBoard (){
