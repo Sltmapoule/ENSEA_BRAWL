@@ -5,7 +5,7 @@ public class Fight {
 
     Player player2 = new Player();
     Player player = new Player();
-    private Pane pane = new Pane();
+    private final Pane pane = new Pane();
     Button win = new Button("Win");
     Button lose = new Button("Lose");
     Button shop = new Button("Shop");

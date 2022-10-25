@@ -14,6 +14,10 @@ public class Main extends Application {
     Scene shopScene = new Scene(shop.getShop());
     Fight fight = new Fight();
     Scene fightScene = new Scene(fight.getFight());
+    Win win = new Win();
+    Scene winScene = new Scene(win.getWin());
+    Lose lose = new Lose();
+    Scene loseScene = new Scene(lose.getLose());
 
     public Main(){
         stage.setTitle("ENSEA BRAWL !");
@@ -31,21 +35,27 @@ public class Main extends Application {
         public void handle(long l) {
             width = stage.getWidth();
             height = stage.getHeight();
-            gameEngine.update(l,welcome.getOutput());
-            gameEngine.update(l,shop.getOutput());
-            gameEngine.update(l,fight.getOutput());
+            gameEngine.update(welcome.getOutput());
+            gameEngine.update(shop.getOutput());
+            gameEngine.update(fight.getOutput());
+            gameEngine.update(win.getOutput());
+            gameEngine.update(lose.getOutput());
             welcome.clear();
             shop.clear();
             fight.clear();
+            win.clear();
+            lose.clear();
             welcome.update(width,height);
             shop.update(width,height);
             fight.update(width,height);
-            render(l);
+            win.update(width,height);
+            lose.update(width,height);
+            render();
         }
     };
 
 
-    public void render(long l){
+    public void render(){
 
         switch (gameEngine.getState()) {
             case WELCOME:
@@ -53,6 +63,7 @@ public class Main extends Application {
                 {
                     stage.setWidth(300);
                     stage.setHeight(800);
+                    stage.setMaximized(false);
                     stage.centerOnScreen();
                     stage.setScene(welcomeScene);
 
@@ -74,6 +85,27 @@ public class Main extends Application {
 
                 }
                 break;
+            case WIN:
+                if (stage.getScene() != winScene)
+                {
+                    stage.setWidth(500);
+                    stage.setHeight(400);
+                    stage.setMaximized(false);
+                    stage.centerOnScreen();
+                    stage.setScene(winScene);
+
+                }
+            case LOST:
+                if (stage.getScene() != loseScene)
+                {
+                    stage.setWidth(500);
+                    stage.setHeight(400);
+                    stage.setMaximized(false);
+                    stage.centerOnScreen();
+                    stage.setScene(loseScene);
+
+                }
+
         }
 
 

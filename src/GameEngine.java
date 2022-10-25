@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 enum State{WELCOME, PLAY_SHOP, PLAY_FIGHT, WIN, LOST}
 
 public class GameEngine {
@@ -10,30 +12,30 @@ public class GameEngine {
         return state;
     }
 
-    public void update(long time,String input){
+    public void update(String input){
         System.out.println(state);
         switch (state){
             case WELCOME :
-                if(input == "PLAY_SHOP")
+                if(Objects.equals(input, "PLAY_SHOP"))
                 { state = State.PLAY_SHOP;}
                 break;
             case PLAY_SHOP :
-                if (input == "PLAY_FIGHT")
+                if (Objects.equals(input, "PLAY_FIGHT"))
                 { state = State.PLAY_FIGHT;}
-                if (input == "LOST")
+                if (Objects.equals(input, "LOST"))
                 { state = State.LOST;}
                 break;
             case PLAY_FIGHT:
-                if(input == "PLAY_SHOP")
+                if(Objects.equals(input, "PLAY_SHOP"))
                 { state = State.PLAY_SHOP;}
-                if (input == "WIN")
+                if (Objects.equals(input, "WIN"))
                 { state = State.WIN;}
-                if (input == "LOST")
+                if (Objects.equals(input, "LOST"))
                 { state = State.LOST;}
                 break;
             case LOST:
             case WIN:
-                if(input == "WELCOME")
+                if(Objects.equals(input, "WELCOME"))
                 { state = State.WELCOME;}
                 break;
 

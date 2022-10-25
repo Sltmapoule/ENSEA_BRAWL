@@ -5,7 +5,7 @@ public class Shop {
 
     Player shop = new Player();
     Player player = new Player();
-    private Pane pane = new Pane();
+    private final Pane pane = new Pane();
     Button fight = new Button("Passer au combat");
     Button lose = new Button("Lose");
     private String output;

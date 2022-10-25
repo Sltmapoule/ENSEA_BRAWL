@@ -3,7 +3,7 @@ import javafx.scene.layout.Pane;
 
 public class Welcome {
     private Pane pane = new Pane();
-    private Button start = new Button("Start");
+    private final Button start = new Button("Start");
     private String output;
 
     public Welcome(){
