@@ -1,22 +1,15 @@
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class Welcome {
     Pane pane = new Pane();
     Button start = new Button("Start");
-    String output = new String();
+    String output;
 
     public Welcome(){
         pane.getChildren().add(start);
         start.setVisible(true);
-        start.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                output = "PLAY_SHOP";
-            }
-        });
+        start.setOnMouseClicked(mouseEvent -> output = "PLAY_SHOP");
     }
 
     public void update(double width,double height){

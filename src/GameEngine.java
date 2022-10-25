@@ -2,7 +2,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
-enum State{WELCOME, PLAY_SHOP, PLAY_FIGHT, WIN, LOST};
+enum State{WELCOME, PLAY_SHOP, PLAY_FIGHT, WIN, LOST}
 
 public class GameEngine {
     private State state=State.WELCOME;
