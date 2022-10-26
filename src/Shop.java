@@ -9,6 +9,7 @@ public class Shop {
     Button fight = new Button("Passer au combat");
     Button lose = new Button("Lose");
     private String output;
+    private Counter timerShop = new Counter();
 
     public Shop(){
         pane.getChildren().add(fight);
@@ -22,7 +23,8 @@ public class Shop {
         player.fillHand();
     }
 
-    public void update(double width,double height){
+    public void update(double width, double height, State state){
+        if (timerShop.getBool() && state==State.PLAY_SHOP){this.output = "PLAY_FIGHT";}
         lose.setTranslateX(10);
         lose.setTranslateY(10);
         fight.setTranslateX((width- fight.getWidth())/2);
@@ -50,5 +52,9 @@ public class Shop {
 
     public String getOutput() {
         return output;
+    }
+
+    public Counter getTimerShop() {
+        return timerShop;
     }
 }

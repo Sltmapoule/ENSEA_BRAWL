@@ -13,7 +13,6 @@ public class GameEngine {
     }
 
     public void update(String input){
-        System.out.println(state);
         switch (state){
             case WELCOME :
                 if(Objects.equals(input, "PLAY_SHOP"))

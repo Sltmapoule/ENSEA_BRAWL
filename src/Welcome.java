@@ -12,7 +12,7 @@ public class Welcome {
         start.setOnMouseClicked(mouseEvent -> output = "PLAY_SHOP");
     }
 
-    public void update(double width,double height){
+    public void update(double width, double height){
         start.setTranslateX((width- start.getWidth())/2);
         start.setTranslateY((height-start.getHeight())/2);
 

@@ -19,7 +19,7 @@ public class Main extends Application {
     Lose lose = new Lose();
     Scene loseScene = new Scene(lose.getLose());
 
-    public Main(){
+    public Main() {
         stage.setTitle("ENSEA BRAWL !");
         stage.show();
     }
@@ -46,10 +46,12 @@ public class Main extends Application {
             win.clear();
             lose.clear();
             welcome.update(width,height);
-            shop.update(width,height);
-            fight.update(width,height);
+            shop.update(width,height,gameEngine.getState());
+            fight.update(width,height,gameEngine.getState());
             win.update(width,height);
             lose.update(width,height);
+            shop.getTimerShop().update();
+            fight.getTimerFight().update();
             render();
         }
     };
@@ -72,6 +74,7 @@ public class Main extends Application {
             case PLAY_SHOP:
                 if (stage.getScene() != shopScene)
                 {
+                    shop.getTimerShop().clear();
                     stage.setMaximized(true);
                     stage.setScene(shopScene);
 
@@ -80,8 +83,10 @@ public class Main extends Application {
             case PLAY_FIGHT:
                 if (stage.getScene() != fightScene)
                 {
+                    fight.getTimerFight().clear();
                     stage.setMaximized(true);
                     stage.setScene(fightScene);
+
 
                 }
                 break;

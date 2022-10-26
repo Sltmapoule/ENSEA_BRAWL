@@ -10,6 +10,7 @@ public class Fight {
     Button lose = new Button("Lose");
     Button shop = new Button("Shop");
     private String output;
+    private Counter timerFight = new Counter();
 
     public Fight(){
         pane.getChildren().add(win);
@@ -26,7 +27,8 @@ public class Fight {
         player.fillHand();
     }
 
-    public void update(double width,double height){
+    public void update(double width,double height,State state){
+        if (timerFight.getBool() && state == State.PLAY_FIGHT){this.output = "PLAY_SHOP";}
         win.setTranslateX((2*width-win.getWidth())/5);
         win.setTranslateY((height-win.getHeight())/2);
         lose.setTranslateX((3*width-win.getWidth())/5);
@@ -56,5 +58,9 @@ public class Fight {
 
     public String getOutput() {
         return output;
+    }
+
+    public Counter getTimerFight() {
+        return timerFight;
     }
 }
