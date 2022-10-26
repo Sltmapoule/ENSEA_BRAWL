@@ -9,7 +9,7 @@ public class Counter {
 
     public void update(){
         time2 = (int)clock.millis()/1000;
-        if ( time2-time1 == 1){ //ici pour régler le temps de chaque scène
+        if ( time2-time1 == 100){ //ici pour régler le temps de chaque scène
             bool = true;
         }
     }
