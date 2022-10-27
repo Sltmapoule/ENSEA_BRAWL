@@ -1,5 +1,6 @@
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 
 public class Shop {
 
@@ -14,6 +15,7 @@ public class Shop {
     public Shop(){
         pane.getChildren().add(fight);
         pane.getChildren().add(lose);
+        pane.getChildren().add(timerShop.getTime());
         fight.setVisible(true);
         fight.setOnMouseClicked(mouseEvent -> output = "PLAY_FIGHT");
         lose.setVisible(true);
@@ -21,6 +23,10 @@ public class Shop {
         shop.fillBoard();
         player.fillBoard();
         player.fillHand();
+        timerShop.getTime().setFont(new Font("Comic sans MS",20));
+        timerShop.getTime().setPrefSize(45,20);
+        timerShop.getTime().setEditable(false);
+
     }
 
     public void update(double width, double height, State state){
@@ -29,6 +35,10 @@ public class Shop {
         lose.setTranslateY(10);
         fight.setTranslateX((width- fight.getWidth())/2);
         fight.setTranslateY((height-fight.getHeight())/2);
+        timerShop.getTime().setTranslateX(width-timerShop.getTime().getWidth()-15);
+        timerShop.getTime().setTranslateY(height-timerShop.getTime().getHeight()-39);
+
+
         for (Card card: shop.getBoard()) {
             if  (!pane.getChildren().contains(card.getCardView())){ pane.getChildren().add(card.getCardView());}
         }

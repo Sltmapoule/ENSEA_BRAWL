@@ -50,8 +50,8 @@ public class Main extends Application {
             fight.update(width,height,gameEngine.getState());
             win.update(width,height);
             lose.update(width,height);
-            shop.getTimerShop().update();
-            fight.getTimerFight().update();
+            shop.getTimerShop().update(width,height);
+            fight.getTimerFight().update(width,height);
             render();
         }
     };

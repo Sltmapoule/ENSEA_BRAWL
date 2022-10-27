@@ -1,5 +1,6 @@
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 
 public class Fight {
 
@@ -16,6 +17,7 @@ public class Fight {
         pane.getChildren().add(win);
         pane.getChildren().add(lose);
         pane.getChildren().add(shop);
+        pane.getChildren().add(timerFight.getTime());
         win.setVisible(true);
         win.setOnMouseClicked(mouseEvent -> output = "WIN");
         lose.setVisible(true);
@@ -35,6 +37,12 @@ public class Fight {
         lose.setTranslateY((height-win.getHeight())/2);
         shop.setTranslateX((width- shop.getWidth())/2);
         shop.setTranslateY((height-shop.getHeight())/2);
+        timerFight.getTime().setFont(new Font("Comic sans MS",20));
+        timerFight.getTime().setPrefSize(45,20);
+        timerFight.getTime().setEditable(false);
+        timerFight.getTime().setTranslateX(width-timerFight.getTime().getWidth()-15);
+        timerFight.getTime().setTranslateY(height-timerFight.getTime().getHeight()-39);
+
         for (Card card: player2.getBoard()) {
             if  (!pane.getChildren().contains(card.getCardView())){pane.getChildren().add(card.getCardView());}
         }
