@@ -11,7 +11,7 @@ public class Fight {
     Button lose = new Button("Lose");
     Button shop = new Button("Shop");
     private String output;
-    private Counter timerFight = new Counter();
+    private final Counter timerFight = new Counter();
 
     public Fight(){
         pane.getChildren().add(win);

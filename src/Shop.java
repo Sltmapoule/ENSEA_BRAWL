@@ -10,7 +10,7 @@ public class Shop {
     Button fight = new Button("Passer au combat");
     Button lose = new Button("Lose");
     private String output;
-    private Counter timerShop = new Counter();
+    private final Counter timerShop = new Counter();
 
     public Shop(){
         pane.getChildren().add(fight);
