@@ -52,7 +52,7 @@ public class Fight {
         for (Card card: player.getHand()) {
             if (!pane.getChildren().contains(card.getCardView())){pane.getChildren().add(card.getCardView());}
         }
-        player.placeCards(width,height,player2);
+        player.placeCards(width,height,player2.getBoard(),false);
 
     }
 

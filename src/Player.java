@@ -27,7 +27,7 @@ public class Player {
     }
     public ArrayList<Card> getHand() {return hand;}
 
-    public void placeCards(double totalWidth, double totalHeight, Player enemy){
+    public void placeCards(double totalWidth, double totalHeight, ArrayList<Card> enemy, boolean shopPhase){
         int pasHorizontalBoardPlayer = (int)(totalWidth/(2*this.board.size()+1));
         int pasVertical = (int)(totalHeight/7);
         for (int i = 0; i<this.board.size(); i++) {
@@ -39,14 +39,44 @@ public class Player {
             this.hand.get(i).getCardView().setX((2 * i + 1) * pasHorizontalHandPlayer);
             this.hand.get(i).getCardView().setY(6 * pasVertical);
         }
-        int pasHorizontalBoardEnemy = (int)(totalWidth/(2*enemy.board.size()+1));
-        for (int i = 0; i<enemy.board.size(); i++) {
-            enemy.board.get(i).getCardView().setX((2 * i + 1) * pasHorizontalBoardEnemy);
-            enemy.board.get(i).getCardView().setY(2 * pasVertical);
+        int pasHorizontalBoardEnemy = (int)(totalWidth/(2*enemy.size()+1));
+        for (int i = 0; i<enemy.size(); i++) {
+            enemy.get(i).getCardView().setX((2 * i + 1) * pasHorizontalBoardEnemy);
+            enemy.get(i).getCardView().setY(2 * pasVertical);
         }
+
+        if (shopPhase) {
+            for (int i = 0; i < this.board.size(); i++) {
+                for (int j = i + 1; j < this.board.size(); j++)
+                    if (this.board.get(i).isBool() && this.board.get(j).isBool()) {
+                        Card cardTampon = this.board.get(i);
+                        this.board.set(i, this.board.get(j));
+                        this.board.set(j, cardTampon);
+                        this.board.get(i).clear();
+                        this.board.get(j).clear();
+                    }
+
+            }
+
+            for (int i = 0; i < enemy.size(); i++) {
+                for (int j = 0; j < enemy.size();j++){
+                    if (enemy.get(i).isBool()) {
+                        enemy.get(i).setBuy();
+                    }
+                    if (i != j ) {this.board.get(i).clear();}
+
+                }
+
+            }
+
+
+        }
+
 
     }
 
 
 
 }
+
+
