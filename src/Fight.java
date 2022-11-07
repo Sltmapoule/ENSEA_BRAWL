@@ -38,9 +38,9 @@ public class Fight {
         shop.setTranslateX((width- shop.getWidth())/2);
         shop.setTranslateY((height-shop.getHeight())/2);
         timerFight.getTime().setFont(new Font("Comic sans MS",20));
-        timerFight.getTime().setPrefSize(45,20);
+        timerFight.getTime().setPrefSize(55,20);
         timerFight.getTime().setEditable(false);
-        timerFight.getTime().setTranslateX(width-timerFight.getTime().getWidth()-15);
+        timerFight.getTime().setTranslateX(width-timerFight.getTime().getWidth()-20);
         timerFight.getTime().setTranslateY(height-timerFight.getTime().getHeight()-39);
 
         for (Card card: player2.getBoard()) {

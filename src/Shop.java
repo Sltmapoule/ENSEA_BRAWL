@@ -15,6 +15,18 @@ public class Shop {
     private String output;
     private final Counter timerShop = new Counter();
 
+    public void Init(){
+        for (Card card: shop) {
+            pane.getChildren().add(card.getButton());
+        }
+        for (Card card: player.getBoard()) {
+                pane.getChildren().add(card.getButton());
+        }
+        for (Card card: player.getHand()) {
+                pane.getChildren().add(card.getButton());
+        }
+    }
+
     public Shop(){
         pane.getChildren().add(fight);
         pane.getChildren().add(lose);
@@ -26,7 +38,7 @@ public class Shop {
         player.fillBoard();
         player.fillHand();
         timerShop.getTime().setFont(new Font("Comic sans MS",20));
-        timerShop.getTime().setPrefSize(45,20);
+        timerShop.getTime().setPrefSize(55,20);
         timerShop.getTime().setEditable(false);
         this.shop.add(new Card("img/testCards.png",0,0,50,50));
         shop.add(new Card("img/testCards.png",60,0,50,50));
@@ -44,29 +56,54 @@ public class Shop {
         lose.setTranslateY(10);
         fight.setTranslateX((width- fight.getWidth())/2);
         fight.setTranslateY((height-fight.getHeight())/2);
-        timerShop.getTime().setTranslateX(width-timerShop.getTime().getWidth()-15);
+        timerShop.getTime().setTranslateX(width-timerShop.getTime().getWidth()-20);
         timerShop.getTime().setTranslateY(height-timerShop.getTime().getHeight()-39);
 
         for (int i = 0; i < shop.size(); i++) {
-            if (shop.get(i).isBoolBuy()){
+            if (shop.get(i).getAction()==1){
                 shop.get(i).clear();
+
                 player.getHand().add(shop.get(i));
                 shop.remove(i);
 
             }
         }
 
+        for (int i = 0; i < player.getHand().size(); i++) {
+            if (player.getHand().get(i).getAction()==2){
+                player.getHand().get(i).clear();
+
+                player.getBoard().add(player.getHand().get(i));
+                player.getHand().remove(i);
+
+            }
+        }
+
+        for (int i = 0; i < player.getBoard().size(); i++) {
+            if (player.getBoard().get(i).getAction()==3){
+                player.getBoard().get(i).clear();
+                player.getBoard().get(i).getCardView().setVisible(false);
+                player.getBoard().get(i).getButton().setVisible(false);
+                player.getBoard().remove(i);
+
+            }
+        }
+
+
         for (Card card: shop) {
             if  (!pane.getChildren().contains(card.getCardView())){
                 pane.getChildren().add(card.getCardView());
-                pane.getChildren().add(card.getBuy());
             }
         }
         for (Card card: player.getBoard()) {
-            if  (!pane.getChildren().contains(card.getCardView())){ pane.getChildren().add(card.getCardView());}
+            if  (!pane.getChildren().contains(card.getCardView())){
+                pane.getChildren().add(card.getCardView());
+            }
         }
         for (Card card: player.getHand()) {
-            if (!pane.getChildren().contains(card.getCardView())){ pane.getChildren().add(card.getCardView());}
+            if (!pane.getChildren().contains(card.getCardView())){
+                pane.getChildren().add(card.getCardView());
+            }
         }
         player.placeCards(width,height,shop,true);
 

@@ -18,10 +18,10 @@ public class Counter {
 
     public void update(double width,double height){
         time2 = (int)clock.millis()/1000;
-        if ( time2-time1 == 10){ //ici pour régler le temps de chaque scène
+        if ( time2-time1 == 100){ //ici pour régler le temps de chaque scène
             bool = true;
         }
-        time.setText(String.valueOf(10-(time2-time1)));
+        time.setText(String.valueOf(100-(time2-time1)));
 
     }
 

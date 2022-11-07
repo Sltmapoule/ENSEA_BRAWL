@@ -20,6 +20,7 @@ public class Main extends Application {
     Scene loseScene = new Scene(lose.getLose());
 
     public Main() {
+        shop.Init();
         stage.setTitle("ENSEA BRAWL !");
         stage.show();
     }
@@ -27,6 +28,7 @@ public class Main extends Application {
 
     public void start(Stage stage) throws Exception{
         at.start();
+
     }
 
 
