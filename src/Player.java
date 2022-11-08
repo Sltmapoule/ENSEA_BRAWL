@@ -1,3 +1,6 @@
+import javafx.scene.effect.Shadow;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -63,27 +66,92 @@ public class Player {
                         this.board.set(i, this.board.get(j));
                         this.board.set(j, cardTampon);
                         this.board.get(i).clear();
+                        this.board.get(i).setNewBool(false);
                         this.board.get(j).clear();
+                        this.board.get(j).setNewBool(false);
+
                     }
             }
 
 
-            for (Card value : enemy) {
-                value.getButton().setText("Acheter");
+
+            for (Card card : enemy) {
+                if (card.isBool()) {
+                    card.getButton().setVisible(true);
+                    card.getCardView().setEffect(new Shadow(1, Color.BLACK));
+                    card.getButton().setText("Buy");
+                }
             }
             for (Card card : this.hand) {
-                card.getButton().setText("Poser");
+                if (card.isBool()) {
+                    card.getButton().setVisible(true);
+                    card.getCardView().setEffect(new Shadow(1, Color.BLACK));
+
+                    card.getButton().setText("Put");
+                }
             }
             for (Card card : this.board) {
-                card.getButton().setText("Vendre");
+                if (card.isBool()) {
+                    card.getButton().setVisible(true);
+                    card.getCardView().setEffect(new Shadow(1, Color.BLACK));
+                    card.getButton().setText("Sell");
+                }
+            }
+
+
+            for ( Card card : enemy){
+                if (card.isNewBool()){
+                    for (Card card0 : enemy) {
+                        card0.clear();
+                    }
+                    for (Card card0 : this.hand) {
+                        card0.clear();
+                    }
+                    for (Card card0 : this.board) {
+                        card0.clear();
+                    }
+                    card.setNewBool(false);
+                    card.setBool(true);
+                }
 
             }
 
+            for ( Card card : this.hand){
+                if (card.isNewBool()){
+                    for (Card card0 : enemy) {
+                        card0.clear();
+                    }
+                    for (Card card0 : this.hand) {
+                        card0.clear();
+                    }
+                    for (Card card0 : this.board) {
+                        card0.clear();
+                    }
+                    card.setNewBool(false);
+                    card.setBool(true);
+                }
+
+            }
+
+            for ( Card card : this.board){
+                if (card.isNewBool()){
+                    for (Card card0 : enemy) {
+                        card0.clear();
+                    }
+                    for (Card card0 : this.hand) {
+                        card0.clear();
+                    }
+                    for (Card card0 : this.board) {
+                        card0.clear();
+                    }
+                    card.setNewBool(false);
+                    card.setBool(true);
+                }
+
+            }
         }
 
-
     }
-
 
 }
 

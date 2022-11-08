@@ -10,6 +10,7 @@ public class Card {
     private boolean bool = false ;
     private final Button button = new Button("Acheter");
     private int action = 0;
+    private boolean newBool = false;
 
 
 
@@ -19,15 +20,7 @@ public class Card {
         cardImgView = new ImageView(cardImg);
         cardImgView.setViewport(new Rectangle2D(offsetX,offsetY,sizeX,sizeY));
         cardImgView.setOnMouseClicked(mouseEvent -> {
-            if (bool) {
-                cardImgView.setEffect(null);
-                button.setVisible(false);
-            } else {
-                cardImgView.setEffect(new Shadow(1, Color.BLACK));
-                button.setVisible(true);
-
-            }
-
+            newBool = true;
             bool = !bool;
         });
 
@@ -56,5 +49,17 @@ public class Card {
 
     public int getAction() {
         return action;
+    }
+
+    public boolean isNewBool() {
+        return newBool;
+    }
+
+    public void setNewBool(boolean newBool) {
+        this.newBool = newBool;
+    }
+
+    public void setBool(boolean bool) {
+        this.bool = bool;
     }
 }
