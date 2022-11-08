@@ -69,11 +69,8 @@ public class Player {
                         this.board.get(i).setNewBool(false);
                         this.board.get(j).clear();
                         this.board.get(j).setNewBool(false);
-
                     }
             }
-
-
 
             for (Card card : enemy) {
                 if (card.isBool()) {
