@@ -1,14 +1,12 @@
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
-import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 public class Card {
     private final ImageView cardImgView;
     private boolean bool = false ;
-    private final Button button = new Button("Acheter");
+    private final Button button = new Button("Buy");
     private int action = 0;
     private boolean newBool = false;
 
