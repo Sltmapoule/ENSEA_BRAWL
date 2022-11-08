@@ -95,8 +95,11 @@ public class Player {
                 }
             }
 
-
-            for ( Card card : enemy){
+            ArrayList<Card> tamp = new ArrayList<>();
+            tamp.addAll(this.hand);
+            tamp.addAll(this.board);
+            tamp.addAll(enemy);
+            for ( Card card : tamp){
                 if (card.isNewBool()){
                     for (Card card0 : enemy) {
                         card0.clear();
@@ -113,39 +116,6 @@ public class Player {
 
             }
 
-            for ( Card card : this.hand){
-                if (card.isNewBool()){
-                    for (Card card0 : enemy) {
-                        card0.clear();
-                    }
-                    for (Card card0 : this.hand) {
-                        card0.clear();
-                    }
-                    for (Card card0 : this.board) {
-                        card0.clear();
-                    }
-                    card.setNewBool(false);
-                    card.setBool(true);
-                }
-
-            }
-
-            for ( Card card : this.board){
-                if (card.isNewBool()){
-                    for (Card card0 : enemy) {
-                        card0.clear();
-                    }
-                    for (Card card0 : this.hand) {
-                        card0.clear();
-                    }
-                    for (Card card0 : this.board) {
-                        card0.clear();
-                    }
-                    card.setNewBool(false);
-                    card.setBool(true);
-                }
-
-            }
         }
 
     }
